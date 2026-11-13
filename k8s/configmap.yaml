@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: execucao-config
+  namespace: ${ENV}
+data:
+  FLASK_DEBUG: "0"
+  AWS_DEFAULT_REGION: "${AWS_REGION}"
+  TABELA_EXECUCOES: "oficina-${ENV}-execucoes"
+  FILA_COMANDOS: "oficina-${ENV}-execucao-comandos.fifo"
+  FILA_EVENTOS_OS: "oficina-${ENV}-os-eventos.fifo"
+  DD_LOGS_INJECTION: "true"
