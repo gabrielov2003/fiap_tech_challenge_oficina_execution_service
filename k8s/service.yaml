@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: execucao-service
+  namespace: ${ENV}
+spec:
+  selector:
+    app: execucao-api
+  ports:
+    - port: 80
+      targetPort: 5000
+  type: LoadBalancer
