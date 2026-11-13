@@ -98,6 +98,8 @@ Tabela DynamoDB `oficina-<env>-execucoes`, fila FIFO `oficina-<env>-execucao-com
 | `build` | Push em `dev` ou `main` | Build da imagem e push no ECR `oficina-execucao` |
 | `deploy` | Depois do build | Terraform do serviço, manifestos no namespace do ambiente e URL publicada em `/oficina/<env>/execucao_url` |
 
+Com a infra desligada (chave `/oficina/infra/ligada` no SSM), o `deploy` é pulado com um aviso. O workflow Ligar infra, no `infra_k8s`, sobe a infra e dispara este pipeline em `dev` e `main`.
+
 `dev` publica em homologação e `main` em produção. Secrets: `AWS_ACCESS_KEY_ID` e `AWS_SECRET_ACCESS_KEY`. Variáveis: `TF_STATE_BUCKET` e, opcional, `AWS_REGION`.
 
 ---
